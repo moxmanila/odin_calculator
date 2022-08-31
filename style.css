@@ -1,0 +1,25 @@
+body {
+    background-color: gray;
+    margin: 0 auto;
+    width: 1200px;
+    text-align: center;
+}
+
+#button-container button {
+    margin: 1px;
+}
+
+#result {
+    background-color: azure;
+    padding:5px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#result-container {
+    text-align: center;
+    margin: 0 auto;
+    width: 500px;
+    margin-top: 20px;
+}

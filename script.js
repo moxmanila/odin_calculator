@@ -1,3 +1,4 @@
+//BASIC CALCULATE FUNCTIONS
 const add = function(a, b) {
     return a + b
 }
@@ -14,6 +15,7 @@ const divide = function (a, b) {
     return a / b
 }
 
+//BASIC OPERATE FUNCTION 
 const operate = function (num1, operator, num2, ) {
     if (operator === "+") {
         return add (num1, num2)
@@ -28,10 +30,7 @@ const operate = function (num1, operator, num2, ) {
     }
 };
 
-// console.log (add (3,4))
-// console.log (subtract (3,4))
-// console.log (multiply (3,4))
-// console.log (divide (3,4))
+
 console.log (operate (3,"+",4))
 console.log (operate (3,"-",4))
 console.log (operate (3,"*",4))
