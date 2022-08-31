@@ -31,28 +31,50 @@ const operate = function (num1, operator, num2, ) {
 };
 
 
-
-
-let one = document.getElementById('1')
-// one.addEventListener ('click', addDisplay)
+let firstValue 
+let secondValue 
+let operateValue
 let display = document.getElementById('result')
+let clear = document.querySelector('.clear').addEventListener('click', clearDisplay)
 
-// function addDisplay() {
-//     display.textContent = one.textContent
+function clearDisplay () {
+    display.textContent = ''
+}
+
+// DISPLAY PRESSED BUTTONS
+let numberBtn = document.querySelectorAll('.number-button')
+for (let i = 0; i<=numberBtn.length-1; i++) {
+    numberBtn[i].addEventListener ('click', function () {
+        display.textContent += numberBtn[i].textContent
+    })
+}
+//OPERATOR FUNCTION
+let operator = document.querySelectorAll('.operator')
+for (i of operator) {
+    i.addEventListener ('click', calculate)
+}
+
+
+// for (let i=0; i<=operator.length-1; i++) {
+//     operator[i].addEventListener('click', calculate)
+//     operateValue = operator[i].textContent
 // }
 
+function calculate(e) {
+    if (firstValue == undefined) {
+        firstValue = parseInt(display.textContent)
+        operateValue = e.target.textContent
+        display.textContent =''
 
-let numberBtn = document.querySelectorAll('.number-button')
-// Display the pressed Buttons on the Display
-for (let i =0; i<=numberBtn.length-1; i++) {
-    numberBtn[i].addEventListener ('click', function () {
-        display.textContent = numberBtn[i].textContent
-    })
+    } else {
+        secondValue = parseInt(display.textContent)
+        display.textContent = operate(firstValue, operateValue, secondValue)
+        firstValue = display.textContent
+    }
 
 }
 
-console.log (operate (3,"+",4))
-console.log (operate (3,"-",4))
-console.log (operate (3,"*",4))
-console.log (operate (3,"/",4))
-console.log (operate (3,"%",4))
+
+
+
+
