@@ -30,6 +30,7 @@ const operate = function (num1, operator, num2, ) {
     }
 };
 
+// DOM SECTION
 
 let firstValue 
 let secondValue 
@@ -55,24 +56,22 @@ for (i of operator) {
 }
 
 
-// for (let i=0; i<=operator.length-1; i++) {
-//     operator[i].addEventListener('click', calculate)
-//     operateValue = operator[i].textContent
-// }
-
 function calculate(e) {
     if (firstValue == undefined) {
         firstValue = parseInt(display.textContent)
         operateValue = e.target.textContent
-        display.textContent =''
-
+        clearDisplay()
+    // CHECK IF I RECLICKED THE OPERATOR BUTTONS
+    } else if (display.textContent == '') {
+        operateValue = e.target.textContent
     } else {
         secondValue = parseInt(display.textContent)
         display.textContent = operate(firstValue, operateValue, secondValue)
-        firstValue = display.textContent
-    }
-
-}
+        firstValue = undefined
+        secondValue = undefined
+        operateValue = undefined
+    } 
+};
 
 
 
