@@ -9,7 +9,7 @@ body {
     margin: 1px;
 }
 
-#result {
+#result-container div {
     background-color: azure;
     padding:20px 30px;
     text-align: center;

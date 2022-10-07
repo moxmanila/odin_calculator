@@ -35,18 +35,25 @@ const operate = function (num1, operator, num2, ) {
 let firstValue 
 let secondValue 
 let operateValue
-let display = document.getElementById('result')
+let resultValue
+let resultdisplay = document.getElementById('result')
+let calcDisplay = document.getElementById('calculation')
 let clear = document.querySelector('.clear').addEventListener('click', clearDisplay)
 
 function clearDisplay () {
-    display.textContent = ''
+    resultdisplay.textContent = ''
+    calcDisplay.textContent = ''
+    firstValue = undefined
+    secondValue = undefined
+    operateValue = undefined
+    resultValue = undefined
 }
 
 // DISPLAY PRESSED BUTTONS
 let numberBtn = document.querySelectorAll('.number-button')
 for (let i = 0; i<=numberBtn.length-1; i++) {
     numberBtn[i].addEventListener ('click', function () {
-        display.textContent += numberBtn[i].textContent
+        calcDisplay.textContent += numberBtn[i].textContent
     })
 }
 //OPERATOR FUNCTION
@@ -57,23 +64,25 @@ for (i of operator) {
 
 
 function calculate(e) {
-    if (firstValue == undefined) {
-        firstValue = parseInt(display.textContent)
+    //INITIAL STEP TO ENTER THE FIRST VALUE
+    if (firstValue == undefined && resultValue == undefined) {
+        firstValue = parseInt(calcDisplay.textContent)
         operateValue = e.target.textContent
-        clearDisplay()
-    // CHECK IF I RECLICKED THE OPERATOR BUTTONS
-    } else if (display.textContent == '') {
+        calcDisplay.textContent = ''
+    // INBETWEEN STEP IF I ALREADY HAD A CALCULATION BEFORE
+    } else if (firstValue == undefined && !(resultValue == undefined)) {
+    // ASSIGN RESULTVALUE TO BE THE NEW FIRSTVALUE
+        firstValue = resultValue
         operateValue = e.target.textContent
+    // CALCULATE FIRST AND SECONDVALUE TOGETHER VIA OPERATE FUNCTION
     } else {
-        secondValue = parseInt(display.textContent)
-        display.textContent = operate(firstValue, operateValue, secondValue)
+        secondValue = parseInt(calcDisplay.textContent)
+        resultdisplay.textContent = 'RESULT = ' + operate(firstValue, operateValue, secondValue)
+        calcDisplay.textContent = ''
+        resultValue = operate(firstValue, operateValue, secondValue)
         firstValue = undefined
         secondValue = undefined
         operateValue = undefined
     } 
 };
-
-
-
-
 
